@@ -4,6 +4,7 @@ EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
 
 # --- Directory Settings ---
 DB_DIR = "db"
+KNOWLEDGE_BASE_DIR = "../helper/knowledge_base"
 
 # --- Prompt Templates ---
 
