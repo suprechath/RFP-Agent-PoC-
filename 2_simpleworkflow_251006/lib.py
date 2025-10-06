@@ -6,6 +6,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain.docstore.document import Document
 
 # from langchain_community.document_loaders import UnstructuredFileLoader //deprecated
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
@@ -70,6 +71,7 @@ def extract_rfp_outline(rfp_filepath, llm):
     chain = outliner_prompt | llm
     
     # Invoke the chain to get the JSON outline
+    print("Invoking the LLM to extract the outline...")
     response_text = chain.invoke({"document_text": document_text})
     
     # A crucial step: try to parse the LLM's JSON output
@@ -91,5 +93,14 @@ def generate_answer_for_question(question, rag_chain):
     Agent 2: The Responder.
     Takes a single question and uses the RAG chain to generate an answer.
     """
+    print(f"Generating answer for question: {question}")
     response = rag_chain.invoke({"input": question})
+
+    # retrieval_handler = RunnablePassthrough.assign(
+    #     context=lambda x: x["question"] | rag_chain.retriever
+    # )
+    # chain = retrieval_handler | rag_chain.combine_docs_chain
+    # response = chain.invoke({"question": question})
+    print(f"Generated Answer: {response['answer']}\n")
+
     return response['answer']

@@ -6,8 +6,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter #to split la
 from langchain_huggingface import HuggingFaceEmbeddings #to create embeddings
 from langchain_community.vectorstores import Chroma #to create and manage the vector store
 
-
-
 # Import settings from our config file
 from config import KNOWLEDGE_BASE_DIR, DB_DIR, EMBEDDING_MODEL_NAME
 
