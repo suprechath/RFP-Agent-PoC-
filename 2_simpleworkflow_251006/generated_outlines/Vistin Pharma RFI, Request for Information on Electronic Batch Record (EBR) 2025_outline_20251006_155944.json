@@ -1,0 +1,106 @@
+[
+  {
+    "section_number": "1",
+    "section_title": "Approval History",
+    "questions": []
+  },
+  {
+    "section_number": "2",
+    "section_title": "Revision History",
+    "questions": []
+  },
+  {
+    "section_number": "3",
+    "section_title": "Review History",
+    "questions": []
+  },
+  {
+    "section_number": "4",
+    "section_title": "Related Documents",
+    "questions": [
+      "Document Number: ",
+      "Title: "
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "Current",
+    "questions": [
+      "Page 1/5",
+      "RFI \u2013 Request for Information"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "CONTENTS",
+    "questions": [
+      "Introduction: ...",
+      "Description of Vistin Pharma:",
+      "Short description of our current quality system:",
+      "The purchase process:",
+      "The scope of the RFI:",
+      "IT infrastructure at Vistin:"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "Current",
+    "questions": [
+      "Page 2/5"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "1. Description of Vistin Pharma",
+    "questions": [
+      "What is the company's history and background?",
+      "What products does the company produce?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "2. Short description of our current quality system",
+    "questions": [
+      "How does the company currently manage its quality systems?",
+      "What are the key components of the current batch record process?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "3. The purchase process",
+    "questions": [
+      "How will the EBR system be purchased and implemented?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "2. The scope of the RFI",
+    "questions": [
+      "What are the key requirements for the EBR system?",
+      "How will the system be integrated with existing IT infrastructure?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "3. IT infrastructure at Vistin",
+    "questions": [
+      "What is the current IT infrastructure at Vistin?",
+      "How will the EBR system interact with other systems and processes?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "4. Information required from the supplier",
+    "questions": [
+      "What information needs to be provided by the suppliers?"
+    ]
+  },
+  {
+    "section_number": "",
+    "section_title": "5. RFI response",
+    "questions": [
+      "When is the final answering of the RFI document due?",
+      "How should questions or clarifications be submitted?"
+    ]
+  }
+]

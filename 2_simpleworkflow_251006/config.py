@@ -1,5 +1,5 @@
 # --- Model and Embedding Settings ---
-MODEL_NAME = "llama3:8b"
+MODEL_NAME = "llama3.1:8b"
 EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
 
 # --- Directory Settings ---
@@ -22,7 +22,7 @@ JSON Output:
 """
 
 RESPONDER_PROMPT_TEMPLATE = """
-You are a professional proposal writer for a company named 'Innovate Inc.'. 
+You are a professional proposal writer for a company named 'Batchline'. 
 Your task is to write a clear, concise, and professional answer to the client's question using ONLY the provided context.
 If the context does not contain the information needed to answer the question, you must state: "Based on the provided documents, I do not have enough information to answer this question."
 

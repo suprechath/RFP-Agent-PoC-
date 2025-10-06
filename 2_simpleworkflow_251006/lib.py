@@ -1,3 +1,4 @@
+import os
 import json
 from langchain.prompts import PromptTemplate
 from langchain_community.llms import Ollama
@@ -5,7 +6,9 @@ from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
-from langchain_community.document_loaders import UnstructuredFileLoader
+
+# from langchain_community.document_loaders import UnstructuredFileLoader //deprecated
+from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader
 
 # Import settings from our config file
 from config import MODEL_NAME, EMBEDDING_MODEL_NAME, DB_DIR, OUTLINER_PROMPT_TEMPLATE, RESPONDER_PROMPT_TEMPLATE
@@ -30,11 +33,33 @@ def extract_rfp_outline(rfp_filepath, llm):
     Reads the RFP document and asks the LLM to create a JSON outline.
     """
     print(f"--- Running Outliner Agent on {rfp_filepath} ---")
-    
-    # Load the document text using UnstructuredFileLoader
-    loader = UnstructuredFileLoader(rfp_filepath)
-    docs = loader.load()
-    document_text = docs[0].page_content if docs else ""
+
+    # Get the file extension to decide which loader to use
+    file_extension = os.path.splitext(rfp_filepath)[1].lower()
+    print(f"Detected file extension: {file_extension}")
+    docs = []
+    try:
+        if file_extension == ".pdf":
+            print("Using PyPDFLoader for PDF file...")
+            loader = PyPDFLoader(rfp_filepath)
+            docs = loader.load_and_split()
+        elif file_extension == ".docx":
+            print("Using Docx2txtLoader for Word file...")
+            loader = Docx2txtLoader(rfp_filepath)
+            docs = loader.load()
+        elif file_extension == ".txt":
+            print("Using built-in loader for text file...")
+            with open(rfp_filepath, "r", encoding="utf-8") as f:
+                text_content = f.read()
+            docs = [Document(page_content=text_content)]
+        else:
+            print(f"Error: Unsupported file type '{file_extension}'. Please use PDF, DOCX, or TXT.")
+            return None
+    except Exception as e:
+        print(f"Error loading file: {e}")
+        return None
+    # Combine the content from all pages/documents into a single string
+    document_text = "\n\n".join([doc.page_content for doc in docs]) if docs else ""
     
     if not document_text:
         print("Error: Could not read document text.")
